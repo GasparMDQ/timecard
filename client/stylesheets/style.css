@@ -1,1 +1,7 @@
 body { padding-top: 70px; }
+
+.-autocomplete-item.selected {
+    color: white;
+    background: #f8f8f8;
+    text-decoration: none;
+}

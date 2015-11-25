@@ -1,0 +1,10 @@
+<template name="start_new_task_widget">
+    <div class="form-group">
+        {{> inputAutocomplete settings=settings id="new_task" class="form-control" placeholder="New task name"}}
+    </div>
+    <button type="submit" class="btn btn-default">Start</button>
+</template>
+
+<template name="taskPill">
+    <span class="badge">{{name}}</span>
+</template>
