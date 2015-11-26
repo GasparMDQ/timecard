@@ -14,16 +14,14 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                {{# if currentUser}}
+                    {{>start_new_task_widget}}
+                {{/if}}
                 <ul class="nav navbar-nav">
                     {{# if currentUser}}
                         <p class="navbar-text">{{>current_task_widget}}</p>
                     {{/if}}
                 </ul>
-                {{# if currentUser}}
-                    <form class="navbar-form navbar-left" role="search">
-                        {{>start_new_task_widget}}
-                    </form>
-                {{/if}}
                 <ul class="nav navbar-nav navbar-right">
                     {{> loginButtons}}
                 </ul>

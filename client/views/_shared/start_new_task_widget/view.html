@@ -1,8 +1,10 @@
 <template name="start_new_task_widget">
-    <div class="form-group">
-        {{> inputAutocomplete settings=settings id="new_task" class="form-control" placeholder="New task name"}}
-    </div>
-    <button type="submit" class="btn btn-default">Start</button>
+    <form class="navbar-form navbar-left" role="search" id="create_task">
+        <div class="form-group">
+            {{> inputAutocomplete settings=settings id="new_task_name" class="form-control" placeholder="New task name"}}
+        </div>
+        <button type="submit" class="btn btn-default">Start</button>
+    </form>
 </template>
 
 <template name="taskPill">

@@ -13,6 +13,11 @@ var mustBeSignedIn = function () {
 
 Router.onBeforeAction(mustBeSignedIn, {except: ['home']});
 
-Router.route('/', {name: 'home'}
-);
+Router.route('/', {
+    name: 'home',
+    action: function () {
+        Session.set('current_task', Tasks.findOne({'end_time': ''}));
+        this.render('home', {});
+    }
+});
 
