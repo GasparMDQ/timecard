@@ -4,7 +4,7 @@ if (Meteor.isClient) {
             e.preventDefault();
             var data = $('#new_task_name').val();
             if (data !== ''){
-                Meteor.call('createTask', data, function (error, result){
+                Meteor.call('createTask', data, Date.now(), function (error, result){
                     if (error) { alert(error.message); }
                 });
             } else {
@@ -12,6 +12,5 @@ if (Meteor.isClient) {
             }
             $('#new_task_name').val('');
         }
-
     });
 }

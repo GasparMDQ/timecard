@@ -5,7 +5,7 @@ Template.start_new_task_widget.helpers({
             limit: 5,
             rules: [
                 {
-                    collection: Tasks,
+                    collection: TasksNames,
                     field: "name",
                     template: Template.taskPill,
                     sort: true

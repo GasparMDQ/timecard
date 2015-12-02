@@ -1,3 +1,8 @@
 <template name="current_task_widget">
-    Current task: {{#if current_task}}{{ current_task.name }} - {{ time_elapsed current_task }}{{else}}none{{/if}}
+    <p class="navbar-text">Current task: {{#if current_task}}{{ current_task.name }} - {{ time_elapsed current_task }}{{else}}none{{/if}}</p>
+    {{#if current_task}}
+        <li>
+            <button type="button" class="btn btn-default navbar-btn" id="stop_current_task"><i class="fa fa-stop"></i></button>
+        </li>
+    {{/if}}
 </template>
