@@ -2,7 +2,7 @@
     <h1>Recent tasks</h1>
     <ul>
     {{#each tasks}}
-         <li> {{this.name}} - {{ started }} - {{ elapsed }} </li>
+         <li> {{>task_preview}} </li>
     {{/each}}
     </ul>
 </template>

@@ -1,0 +1,8 @@
+<template name="daily_summary">
+    <h1>Today Summary</h1>
+    <ul>
+        {{#each tasks}}
+            <li>{{>task_summary}}</li>
+        {{/each}}
+    </ul>
+</template>
