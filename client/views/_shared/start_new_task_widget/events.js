@@ -3,9 +3,11 @@ if (Meteor.isClient) {
         'submit #create_task': function (e) {
             e.preventDefault();
             var data = $('#new_task_name').val();
-            if (data !== ''){
-                Meteor.call('createTask', data, Date.now(), function (error, result){
-                    if (error) { alert(error.message); }
+            if (data !== '') {
+                Meteor.call('createTask', data, moment().millisecond(0).valueOf(), function (error, result) {
+                    if (error) {
+                        alert(error.message);
+                    }
                 });
             } else {
                 alert('You need to input a task name');

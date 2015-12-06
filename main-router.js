@@ -12,12 +12,26 @@ var mustBeSignedIn = function () {
 };
 
 Router.onBeforeAction(mustBeSignedIn, {except: ['home']});
+Router.onBeforeAction(function(){
+    Session.set('current_task', Tasks.findOne({'end_time': ''}));
+    this.next();
+});
 
 Router.route('/', {
     name: 'home',
     action: function () {
-        Session.set('current_task', Tasks.findOne({'end_time': ''}));
         this.render('home', {});
+    }
+});
+
+Router.route('/task/edit/:_id', {
+    name: 'task.edit',
+    action: function () {
+        this.render('task_edit', {
+            data: function(){
+                return Tasks.findOne({'_id': this.params._id});
+            }
+        });
     }
 });
 
