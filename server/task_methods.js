@@ -38,5 +38,11 @@ Meteor.methods({
             throw  new Meteor.Error("wrong-data",
                 "You need to enter a valid time");
         }
+    },
+    removeTask: function(id){
+        Tasks.remove({
+            '_id': id,
+            'user_id': Meteor.userId()
+        });
     }
 });

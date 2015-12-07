@@ -14,12 +14,26 @@ if (Meteor.isClient) {
             task.end_time = isNaN(endTime) ? '' : endTime;
 
             //todo task validation
-            if (task.name !== ''){
-                Meteor.call('updateTask', task, function (error, result){
-                    if (error) { alert(error.message); }
+            if (task.name !== '') {
+                Meteor.call('updateTask', task, function (error, result) {
+                    if (error) {
+                        alert(error.message);
+                    }
                 });
             } else {
                 alert('You need to input a task name');
+            }
+        },
+        'click #task_remove_button': function (e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to delete this task?\nTHIS ACTION CAN\'T BE UNDONE')) {
+                Meteor.call('removeTask', this._id, function (error, result) {
+                    if (error) {
+                        alert(error.message);
+                    } else {
+                        Router.go('/');
+                    }
+                });
             }
         }
     });
