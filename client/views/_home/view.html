@@ -1,9 +1,6 @@
 <template name="home">
     {{#if  currentUser }}
         {{>weekly_summary}}
-        {{>daily_summary}}
-        {{>daily_list}}
-        {{>task_list}}
     {{else}}
         <p>Please sign in to start tracking your tasks.</p>
     {{/if}}

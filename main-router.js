@@ -41,3 +41,32 @@ Router.route('/task/edit/:_id', {
     }
 });
 
+Router.route('/summary/weekly', {
+    name: 'weekly.summary',
+    action: function () {
+        this.render('weekly_summary', {});
+    }
+});
+
+
+Router.route('/task/today', {
+    name: 'task.today',
+    action: function () {
+        this.render('daily_list', {});
+    }
+});
+
+Router.route('/task/recent', {
+    name: 'task.recent',
+    action: function () {
+        this.render('task_list', {});
+    }
+});
+
+
+Router.route('/task/new', {
+    name: 'task.new',
+    action: function () {
+        this.render('task_new', {});
+    }
+});
