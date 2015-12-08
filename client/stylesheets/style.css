@@ -8,3 +8,16 @@ body {
     background: #777;
     text-decoration: none;
 }
+
+.footer .navbar-form {
+    padding-left: 0px;
+}
+@media (max-width: 767px) {
+    .footer .navbar-text {
+        display: inline;
+        margin: 0px 15px;
+    }
+    .footer .navbar-nav {
+        margin: 0px;
+    }
+}
