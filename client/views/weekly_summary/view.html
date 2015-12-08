@@ -1,4 +1,13 @@
 <template name="weekly_summary">
-    <h3>Week Summary</h3>
+    <h3>Week Summary<span class="pull-right">{{>week_choice}}</span></h3>
     <div id="weekly_summary_chart" style="min-width: 100%; height: 100%; margin: 0 auto"></div>
+    <div class="center-block">{{week_interval}}</div>
+</template>
+
+<template name="week_choice">
+    <div class="btn-group" role="group" aria-label="Week Select">
+        <button class="btn btn-default week-button" value="remove"><i class="fa fa-caret-left"></i></button>
+        <button class="btn btn-default week-button"><i class="fa fa-dot-circle-o"></i></button>
+        <button class="btn btn-default week-button" value="add"><i class="fa fa-caret-right"></i></button>
+    </div>
 </template>

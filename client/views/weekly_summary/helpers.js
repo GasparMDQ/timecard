@@ -1,5 +1,10 @@
 if (Meteor.isClient) {
     var chart;
+
+    Template.weekly_summary.onCreated(function () {
+        Session.set('weekly_summary_week_offset', 0);
+    });
+
     Template.weekly_summary.onRendered(function () {
         var chartOptions = {
             chart: {type: 'column', renderTo: 'weekly_summary_chart', zoomType: "xy"},
@@ -45,8 +50,8 @@ if (Meteor.isClient) {
             tasks = Tasks.find({
                     'end_time': {$not: ''},
                     'start_time': {
-                        $gte: moment().startOf('week').valueOf(),
-                        $lte: moment().endOf('week').valueOf()
+                        $gte: moment().startOf('isoWeek').add(Session.get('weekly_summary_week_offset', 0), 'weeks').valueOf(),
+                        $lte: moment().endOf('isoWeek').add(Session.get('weekly_summary_week_offset', 0), 'weeks').valueOf()
                     }
                 }
             ).fetch();
@@ -77,20 +82,30 @@ if (Meteor.isClient) {
                 });
                 serieIndex = _.indexOf(seriesList, name);
                 if (serieIndex !== -1) {
-                    chart.series[serieIndex].setData(serie.data);
+                    chart.series[serieIndex].setData(serie.data, false, false);
                     seriesToDelete = _.without(seriesToDelete, name);
                 } else {
-                    chart.addSeries(serie);
+                    chart.addSeries(serie, false, false);
                 }
             });
 
-            seriesList = _.pluck(chart.series, 'name');
             _.each(seriesToDelete, function (name) {
+                seriesList = _.pluck(chart.series, 'name');
                 var serieIndex = _.indexOf(seriesList, name);
                 if (serieIndex !== -1) {
-                    chart.series[serieIndex].remove();
+                    chart.series[serieIndex].remove(false);
                 }
             });
+            chart.redraw();
         });
+    });
+
+    Template.weekly_summary.helpers({
+        week_interval: function () {
+            var start = moment().startOf('isoWeek').add(Session.get('weekly_summary_week_offset', 0), 'weeks');
+            var end = moment().endOf('isoWeek').add(Session.get('weekly_summary_week_offset', 0), 'weeks');
+
+            return start.format("dddd, MMM Do YYYY")+" - "+end.format("dddd, MMM Do YYYY");
+        }
     });
 }
