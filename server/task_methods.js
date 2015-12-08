@@ -33,7 +33,7 @@ Meteor.methods({
     },
     stopCurrentTask: function(endTime){
         if(endTime !== '') {
-            Tasks.update({'end_time': ''}, {$set: {'end_time': endTime}}, {multi: true});
+            Tasks.update({'end_time': '','user_id': Meteor.userId()}, {$set: {'end_time': endTime}}, {multi: true});
         } else {
             throw  new Meteor.Error("wrong-data",
                 "You need to enter a valid time");
