@@ -28,8 +28,11 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Tasks <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{pathFor route='task.new'}}">New Task</a></li>
-                            <li role="separator" class="divider"></li>
+                            <li><a href="{{pathFor route='task.new'}}" class="visible-xs-block">Start New Task</a></li>
+                            {{#with current_task}}
+                                <li><a href="{{pathFor route='task.edit'}}" class="visible-xs-block">Edit Current Task</a></li>
+                            {{/with}}
+                            <li role="separator" class="divider visible-xs-block"></li>
                             <li><a href="{{pathFor route='task.today'}}">Today</a></li>
                             <li><a href="{{pathFor route='task.recent'}}">Recent</a></li>
                         </ul>

@@ -49,6 +49,14 @@ Router.route('/summary/weekly', {
 });
 
 
+Router.route('/summary/daily', {
+    name: 'daily.summary',
+    action: function () {
+        this.render('daily_summary', {});
+    }
+});
+
+
 Router.route('/task/today', {
     name: 'task.today',
     action: function () {

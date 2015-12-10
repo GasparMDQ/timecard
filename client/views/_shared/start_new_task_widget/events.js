@@ -2,9 +2,12 @@ if (Meteor.isClient) {
     Template.start_new_task_widget.events({
         'submit #create_task': function (e) {
             e.preventDefault();
-            var data = $('#new_task_name').val();
-            if (data !== '') {
-                Meteor.call('createTask', data, moment().millisecond(0).valueOf(), function (error, result) {
+            var task = {
+                'name': $('#new_task_name').val(),
+                'start_time': moment().millisecond(0).valueOf()
+            };
+            if (task !== '') {
+                Meteor.call('createTask', task, function (error, result) {
                     if (error) {
                         alert(error.message);
                     }

@@ -13,7 +13,6 @@ if (Meteor.isClient) {
                     Session.set('weekly_summary_week_offset', 0);
                     break;
             }
-            console.log(e.currentTarget.value);
         }
     });
 }
