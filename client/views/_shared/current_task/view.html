@@ -1,0 +1,7 @@
+<template name="current_task_widget">
+    {{#with current_task}}
+        <p class="navbar-text">Current task: {{ this.name }}{{#if this.subtask }}<span class="hidden-xs"> - {{ this.subtask }}</span>{{/if}} - {{ time_elapsed }}</p>
+        <a href="{{pathFor route='task.edit'}}" class="btn btn-default navbar-btn hidden-xs"><i class="fa fa-pencil-square-o"></i></a>
+        <button type="button" class="btn btn-default navbar-btn" id="stop_current_task"><i class="fa fa-stop"></i></button>
+    {{/with}}
+</template>

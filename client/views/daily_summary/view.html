@@ -1,0 +1,13 @@
+<template name="daily_summary">
+    <h3><span class="pull-right">{{>day_choice}}</span>Daily Summary for {{ day }}</h3>
+    <div id="daily_summary_chart" style="min-width: 100%; height: 100%; margin: 0 auto"></div>
+
+</template>
+
+<template name="day_choice">
+    <div class="btn-group" role="group" aria-label="Day Select">
+        <button class="btn btn-default day-button" value="remove"><i class="fa fa-caret-left"></i></button>
+        <button class="btn btn-default day-button"><i class="fa fa-dot-circle-o"></i></button>
+        <button class="btn btn-default day-button" value="add"><i class="fa fa-caret-right"></i></button>
+    </div>
+</template>
