@@ -1,7 +1,7 @@
 if (Meteor.isClient) {
     Template.task_edit.onRendered(function () {
-        Session.set('start_time', this.data.start_time !== ''?moment(this.data.start_time).format('YYYY-MM-DDTHH:mm:ss'):'');
-        Session.set('end_time', this.data.end_time !== ''?moment(this.data.end_time).format('YYYY-MM-DDTHH:mm:ss'):'');
+        Session.set('start_time', '');
+        Session.set('end_time', '');
     });
 
     Template.task_edit.helpers({
@@ -48,6 +48,8 @@ if (Meteor.isClient) {
             };
         },
         isoDates: function () {
+            Session.set('start_time', this.start_time !== ''?moment(this.start_time).format('YYYY-MM-DDTHH:mm:ss'):'');
+            Session.set('end_time', this.end_time !== ''?moment(this.end_time).format('YYYY-MM-DDTHH:mm:ss'):'');
             return {
                 'start_time': Session.get('start_time'),
                 'end_time': Session.get('end_time')
