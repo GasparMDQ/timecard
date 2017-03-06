@@ -3,7 +3,7 @@ Meteor.methods({
         if (task.name !== '') {
             task.user_id = Meteor.userId();
             task.end_time = '';
-            Tasks.update({'end_time': ''}, {$set: {'end_time': task.start_time}}, {multi: true});
+            Tasks.update({'end_time': '', 'user_id': Meteor.userId()}, {$set: {'end_time': task.start_time}}, {multi: true});
             Tasks.insert(task);
         } else {
             throw new Meteor.Error("wrong-data",
